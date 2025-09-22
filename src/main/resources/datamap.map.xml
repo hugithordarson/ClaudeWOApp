@@ -13,9 +13,28 @@
 			<db-key-generator name="DEFAULT"/>
 		</db-generated-key>
 	</db-entity>
+	<db-entity name="pet">
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true" isGenerated="true"/>
+		<db-attribute name="name" type="VARCHAR" length="255"/>
+		<db-attribute name="person_id" type="BIGINT" isMandatory="true"/>
+		<db-generated-key>
+			<db-key-generator name="DEFAULT"/>
+		</db-generated-key>
+	</db-entity>
+	<db-relationship name="pets" source="person" target="pet" toMany="true">
+		<db-attribute-pair source="id" target="person_id"/>
+	</db-relationship>
+	<db-relationship name="person" source="pet" target="person" toMany="false">
+		<db-attribute-pair source="person_id" target="id"/>
+	</db-relationship>
 	<obj-entity name="Person" className="com.example.model.Person" dbEntityName="person">
 		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
 		<obj-attribute name="address" type="java.lang.String" db-attribute-path="address"/>
 		<obj-attribute name="phoneNumber" type="java.lang.String" db-attribute-path="phone_number"/>
 	</obj-entity>
+	<obj-entity name="Pet" className="com.example.model.Pet" dbEntityName="pet">
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<obj-relationship name="pets" source="Person" target="Pet" deleteRule="Cascade" db-relationship-path="pets"/>
+	<obj-relationship name="person" source="Pet" target="Person" deleteRule="Nullify" db-relationship-path="person"/>
 </data-map>

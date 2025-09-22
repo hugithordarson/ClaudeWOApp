@@ -7,6 +7,7 @@ import org.apache.cayenne.configuration.server.ServerRuntime;
 import org.apache.cayenne.query.ObjectSelect;
 
 import com.example.model.Person;
+import com.example.model.Pet;
 
 public class DatabaseService {
 	private static DatabaseService instance;
@@ -42,6 +43,20 @@ public class DatabaseService {
 		person.setPhoneNumber(phoneNumber);
 		context.commitChanges();
 		return person;
+	}
+
+	public void deleteAllData() {
+		ObjectContext context = getObjectContext();
+
+		// Delete all pets first (due to foreign key constraints)
+		List<Pet> allPets = ObjectSelect.query(Pet.class).select(context);
+		context.deleteObjects(allPets);
+
+		// Then delete all persons
+		List<Person> allPersons = ObjectSelect.query(Person.class).select(context);
+		context.deleteObjects(allPersons);
+
+		context.commitChanges();
 	}
 
 	public void shutdown() {

@@ -35,4 +35,12 @@
 	<wo:conditional condition="$people.size" negate="true">
 		<p><em>No people added yet.</em></p>
 	</wo:conditional>
+
+	<hr style="margin: 2rem 0; border: none; border-top: 1px solid #ddd;" />
+
+	<wo:form>
+		<wo:submitButton value="Delete All Data" action="$deleteAllData"
+			style="background-color: #dc3545; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 4px; cursor: pointer; font-size: 1rem;"
+			onclick="return confirm('Are you sure you want to delete all people and pets? This cannot be undone!');" />
+	</wo:form>
 </wo:PageWrapper>

@@ -20,6 +20,42 @@
 				<td style="border: 1px solid #ddd; padding: 0.75rem;"><wo:string value="$selectedPerson.phoneNumber" /></td>
 			</tr>
 		</table>
+
+		<h2>Pets</h2>
+
+		<wo:form>
+			<div style="margin-bottom: 1rem;">
+				<label for="petNameField" style="display: block; margin-bottom: 0.25rem;">Pet Name:</label>
+				<wo:textfield value="$petNameInput" id="petNameField" style="width: 200px;" />
+				<wo:submitButton value="Add Pet" action="$addPet" style="margin-left: 0.5rem;" />
+			</div>
+		</wo:form>
+
+		<wo:conditional condition="$selectedPerson.pets.size">
+			<table style="border-collapse: collapse; width: 100%; margin: 1rem 0;">
+				<tr style="background-color: #f8f9fa;">
+					<th style="border: 1px solid #ddd; padding: 0.75rem; text-align: left;">Pet Name</th>
+					<th style="border: 1px solid #ddd; padding: 0.75rem; text-align: left;">Actions</th>
+				</tr>
+				<wo:repetition list="$selectedPerson.pets" item="$currentPet">
+					<tr>
+						<td style="border: 1px solid #ddd; padding: 0.75rem;">
+							<wo:string value="$currentPet.name" />
+						</td>
+						<td style="border: 1px solid #ddd; padding: 0.75rem;">
+							<wo:form>
+								<wo:submitButton value="Delete" action="$deletePet"
+									style="background-color: #dc3545; color: white; border: none; padding: 0.25rem 0.5rem; border-radius: 3px; cursor: pointer;" />
+							</wo:form>
+						</td>
+					</tr>
+				</wo:repetition>
+			</table>
+		</wo:conditional>
+
+		<wo:conditional condition="$selectedPerson.pets.size" negate="true">
+			<p><em>No pets added yet.</em></p>
+		</wo:conditional>
 	</wo:conditional>
 
 	<wo:conditional condition="$selectedPerson" negate="true">

@@ -45,4 +45,9 @@ public class Main extends ERXComponent {
 		nameDetailPage.mainPage = this;
 		return nameDetailPage;
 	}
+
+	public WOActionResults deleteAllData() {
+		DatabaseService.getInstance().deleteAllData();
+		return null;
+	}
 }

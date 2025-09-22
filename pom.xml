@@ -46,6 +46,11 @@
 		</dependency>
 		<dependency>
 			<groupId>wonder.core</groupId>
+			<artifactId>ERLoggingreload4j</artifactId>
+			<version>${wonder.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>wonder.core</groupId>
 			<artifactId>WOOgnl</artifactId>
 			<version>${wonder.version}</version>
 		</dependency>
