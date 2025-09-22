@@ -1,9 +1,9 @@
 package com.example.components;
 
-import com.webobjects.appserver.WOComponent;
 import com.webobjects.appserver.WOContext;
+import er.extensions.components.ERXComponent;
 
-public class PageWrapper extends WOComponent {
+public class PageWrapper extends ERXComponent {
 	private static final long serialVersionUID = 1L;
 
 	public String title = "MyWebObjectsApp";

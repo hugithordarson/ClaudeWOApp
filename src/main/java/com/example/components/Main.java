@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.webobjects.appserver.WOActionResults;
-import com.webobjects.appserver.WOComponent;
 import com.webobjects.appserver.WOContext;
+import er.extensions.components.ERXComponent;
 
-public class Main extends WOComponent {
+public class Main extends ERXComponent {
 	private static final long serialVersionUID = 1L;
 
 	public String nameInput;
@@ -28,7 +28,7 @@ public class Main extends WOComponent {
 	}
 
 	public WOActionResults viewName() {
-		NameDetail nameDetailPage = (NameDetail) pageWithName(NameDetail.class.getName());
+		NameDetail nameDetailPage = pageWithName(NameDetail.class);
 		nameDetailPage.selectedName = currentName;
 		return nameDetailPage;
 	}
