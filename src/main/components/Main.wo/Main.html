@@ -1,24 +1,38 @@
-<wo:PageWrapper title="Name Manager">
-	<h1>Name Manager</h1>
+<wo:PageWrapper title="Person Manager">
+	<h1>Person Manager</h1>
 
 	<wo:form>
-		<p>
-			<label for="nameField">Enter a name:</label><br/>
-			<wo:textfield value="$nameInput" id="nameField" />
-			<wo:submitButton value="Add Name" action="$addName" />
-		</p>
+		<div style="margin-bottom: 1rem;">
+			<label for="nameField" style="display: block; margin-bottom: 0.25rem;">Name:</label>
+			<wo:textfield value="$nameInput" id="nameField" style="width: 100%; max-width: 300px;" />
+		</div>
+		<div style="margin-bottom: 1rem;">
+			<label for="addressField" style="display: block; margin-bottom: 0.25rem;">Address:</label>
+			<wo:textfield value="$addressInput" id="addressField" style="width: 100%; max-width: 300px;" />
+		</div>
+		<div style="margin-bottom: 1rem;">
+			<label for="phoneField" style="display: block; margin-bottom: 0.25rem;">Phone Number:</label>
+			<wo:textfield value="$phoneInput" id="phoneField" style="width: 100%; max-width: 300px;" />
+		</div>
+		<div>
+			<wo:submitButton value="Add Person" action="$addPerson" />
+		</div>
 	</wo:form>
 
-	<wo:conditional condition="$names.size">
-		<h2>Names List:</h2>
+	<wo:conditional condition="$people.size">
+		<h2>People List:</h2>
 		<ul>
-			<wo:repetition list="$names" item="$currentName">
-				<li><wo:hyperlink action="$viewName"><wo:string value="$currentName" /></wo:hyperlink></li>
+			<wo:repetition list="$people" item="$currentPerson">
+				<li>
+					<wo:conditional condition="$currentPerson">
+						<wo:hyperlink action="$viewPerson"><wo:string value="$currentPerson.name" /></wo:hyperlink>
+					</wo:conditional>
+				</li>
 			</wo:repetition>
 		</ul>
 	</wo:conditional>
 
-	<wo:conditional condition="$names.size" negate="true">
-		<p><em>No names added yet.</em></p>
+	<wo:conditional condition="$people.size" negate="true">
+		<p><em>No people added yet.</em></p>
 	</wo:conditional>
 </wo:PageWrapper>

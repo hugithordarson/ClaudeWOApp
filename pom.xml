@@ -11,7 +11,7 @@
 	<properties>
 		<!-- properties used for filtering and dependency management -->
 		<webobjects.version>5.4.3</webobjects.version>
-		<wonder.version>7.4</wonder.version>
+		<wonder.version>8.0.0.slim-SNAPSHOT</wonder.version>
 
 		<!-- encoding properties -->
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -53,6 +53,25 @@
 			<groupId>com.webobjects</groupId>
 			<artifactId>JavaWebObjects</artifactId>
 			<version>${webobjects.version}</version>
+		</dependency>
+
+		<!-- H2 Database -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>2.2.224</version>
+		</dependency>
+
+		<!-- Apache Cayenne -->
+		<dependency>
+			<groupId>org.apache.cayenne</groupId>
+			<artifactId>cayenne-server</artifactId>
+			<version>4.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cayenne</groupId>
+			<artifactId>cayenne-project</artifactId>
+			<version>4.2.1</version>
 		</dependency>
 	</dependencies>
 </project>

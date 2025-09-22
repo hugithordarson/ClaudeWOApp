@@ -1,7 +1,30 @@
-<wo:PageWrapper title="Name Detail">
-	<h1>Name Detail</h1>
+<wo:PageWrapper title="Person Detail">
+	<h1>Person Detail</h1>
 
-	<p>Selected name: <strong><wo:string value="$selectedName" /></strong></p>
+	<wo:conditional condition="$selectedPerson">
+		<table style="border-collapse: collapse; width: 100%; margin: 1rem 0;">
+			<tr style="background-color: #f8f9fa;">
+				<th style="border: 1px solid #ddd; padding: 0.75rem; text-align: left; font-weight: bold;">Field</th>
+				<th style="border: 1px solid #ddd; padding: 0.75rem; text-align: left; font-weight: bold;">Value</th>
+			</tr>
+			<tr style="background-color: #f8f9fa;">
+				<td style="border: 1px solid #ddd; padding: 0.75rem; font-weight: bold;">Name</td>
+				<td style="border: 1px solid #ddd; padding: 0.75rem;"><wo:string value="$selectedPerson.name" /></td>
+			</tr>
+			<tr>
+				<td style="border: 1px solid #ddd; padding: 0.75rem; font-weight: bold;">Address</td>
+				<td style="border: 1px solid #ddd; padding: 0.75rem;"><wo:string value="$selectedPerson.address" /></td>
+			</tr>
+			<tr style="background-color: #f8f9fa;">
+				<td style="border: 1px solid #ddd; padding: 0.75rem; font-weight: bold;">Phone Number</td>
+				<td style="border: 1px solid #ddd; padding: 0.75rem;"><wo:string value="$selectedPerson.phoneNumber" /></td>
+			</tr>
+		</table>
+	</wo:conditional>
 
-	<p><wo:hyperlink action="$backToMain">← Back to Name Manager</wo:hyperlink></p>
+	<wo:conditional condition="$selectedPerson" negate="true">
+		<p><em>No person selected.</em></p>
+	</wo:conditional>
+
+	<p><wo:hyperlink action="$backToMain">← Back to Person Manager</wo:hyperlink></p>
 </wo:PageWrapper>
