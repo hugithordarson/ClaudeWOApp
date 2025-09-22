@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Name Manager</title>
+</head>
+<body>
+	<h1>Name Manager</h1>
+
+	<wo:form>
+		<p>
+			<label for="nameField">Enter a name:</label><br/>
+			<wo:textfield value="$nameInput" id="nameField" />
+			<wo:submitButton value="Add Name" action="$addName" />
+		</p>
+	</wo:form>
+
+	<wo:conditional condition="$names.size">
+		<h2>Names List:</h2>
+		<ul>
+			<wo:repetition list="$names" item="$currentName">
+				<li><wo:hyperlink action="$viewName"><wo:string value="$currentName" /></wo:hyperlink></li>
+			</wo:repetition>
+		</ul>
+	</wo:conditional>
+
+	<wo:conditional condition="$names.size" negate="true">
+		<p><em>No names added yet.</em></p>
+	</wo:conditional>
+</body>
+</html>
